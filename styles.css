@@ -1,0 +1,886 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Sora:wght@300;400;500;600&display=swap');
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base */
+body {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  /* font-family: "DM Sans", sans-serif; */
+  font-family: "Sora", sans-serif;
+  background: #000000;
+  color: #e5e7eb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  text-align: center;
+  padding: 20px 10px;
+  background: #000000;
+  border-bottom: 1px solid #000000;
+}
+
+#title {
+  font-size: 4rem;
+  letter-spacing: 1px;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+header p {
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
+
+/* Content containers */
+#cont,
+#form_sec,
+#result1,
+#history {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid #1f2937;
+  background: #000000;
+}
+
+/* result and history gradients */
+#result1,
+#history {
+  background: linear-gradient(100deg, #000000 55%, #736f6f);
+  margin-top: 20px;
+}
+
+/* Content text */
+#cont h2 {
+  margin-bottom: 8px;
+  color: #e5e7eb;
+}
+
+#cont p {
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
+
+/* Form */
+#form_el {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#name,
+#text_box {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  border: 1px solid #4b5563;
+  background: #000000;
+  color: #e5e7eb;
+  outline: none;
+}
+
+#name::placeholder,
+#text_box::placeholder {
+  color: #6b7280;
+}
+
+#name:focus,
+#text_box:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 1px #38bdf8;
+}
+
+/* Buttons */
+button[type="submit"],
+button[type="reset"],
+#clear_history,
+.delete_btn {
+  align-self: flex-start;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+button[type="submit"] {
+  margin-right: 250px;
+  background: linear-gradient(95deg, #736f6f, #000000);
+}
+
+button[type="submit"]:hover,
+button[type="reset"]:hover,
+#clear_history:hover,
+.delete_btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.25);
+  opacity: 0.95;
+}
+
+button[type="submit"]:active,
+button[type="reset"]:active,
+#clear_history:active,
+.delete_btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Reset and specific button colors */
+button[type="reset"] {
+  background: linear-gradient(95deg, #736f6f, #000000);
+}
+
+#clear_history {
+  margin-bottom: 10px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgb(194, 196, 194), rgb(194, 196, 194));
+  color: #000000;
+  font-weight: 600;
+}
+
+.delete_btn {
+  background: rgb(194, 196, 194);
+  border-radius: 4px;
+  color: #000000;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  background: #000000;
+  border-top: 1px solid #000000;
+  padding: 10px 0;
+}
+
+#bottom {
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.8rem;
+}
+
+/* History list */
+#history h3 {
+  margin-bottom: 10px;
+  color: #f3ecec;
+}
+
+#history_list {
+  list-style: none;
+  padding-left: 0;
+  color: #f3ecec;
+  font-size: 0.9rem;
+}
+
+#history_list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  border-bottom: 2px solid #ffffff;
+  padding: 4px 0;
+}
+
+#empty_msg, #result {
+  color: #6b7280;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.9s ease-out 2.3s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Microphone button */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+#mic_btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 5px;
+  border-radius: 50%;
+  z-index: 10;
+  margin: 0;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+#mic_btn:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.listening {
+  color: #ef4444;
+  animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* Intro overlay + flicker */
+#intro_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeOutOverlay 0.8s ease-out 1.5s forwards;
+  pointer-events: none;
+}
+
+#intro_overlay h1 {
+  font-size: 4rem;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.flicker-text {
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 4px #38bdf8, 0 0 10px #38bdf8;
+  }
+  20%, 24%, 55% {
+    opacity: 0.1;
+    text-shadow: none;
+  }
+}
+
+@keyframes fadeOutOverlay {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  #cont,
+  #form_sec {
+    margin-inline: 10px;
+    padding: 15px;
+  }
+
+  #title {
+    font-size: 1.8rem;
+  }
+
+  button[type="submit"] {
+    margin-right: 0;
+  }
+}
+
+
+
+
+
+/* ---------- TWO-COLUMN LAYOUT WITH NEW SIZES ---------- */
+
+#main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 60px;
+  width: 100%;
+  padding: 40px 20px;
+  padding-left: 160px;   /* <<< pushes both boxes to the right */
+  min-height: calc(100vh - 160px);
+}
+
+/* LEFT SIDE — TrendMood section (larger) */
+#left_col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+
+  /* INCREASE WIDTH + HEIGHT */
+  width: 550px;
+  min-height: 500px;
+
+  padding: 20px;
+  border-radius: 14px;
+  background: #0a0a0a;
+  border: 1px solid #1f2937;
+  
+  box-shadow: 0 0 25px rgba(255,255,255,0.05);
+}
+.left-header
+{
+  background: #0a0a0a;
+  border: 1px solid #0a0a0a;;
+}
+/* Title inside left column */
+.left-header #title {
+  background: #0a0a0a;
+  font-size: 4.8rem;    /* bigger title */
+}
+
+.left-header p {
+  background: #0a0a0a;
+  font-size: 1.1rem;
+}
+
+/* Description box inside left column */
+#cont {
+  width: 90%;
+  padding: 20px;
+  border-radius: 12px;
+  background: #050505;
+  border: 1px solid #2a2a2a;
+
+  /* MAKE IT BIGGER */
+  min-height: 120px;
+}
+
+#cont h2 {
+  font-size: 1.3rem;
+}
+#cont p {
+  font-size: 1.0rem;
+}
+
+#form_sec {
+  /* WIDER */
+  width: 580px;
+
+  /* TALLER */
+  min-height: 850px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 35px 35px;
+
+  border-radius: 18px;
+  border: 1px solid #1f2937;
+  background: #000;
+  box-shadow: 0 0 40px rgba(255,255,255,0.06);
+}
+
+#text_box {
+  height: 200px;
+}
+
+
+/* Responsive */
+@media (max-width: 1000px) {
+  #main {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  #left_col, #form_sec {
+    width: 95%;
+    min-height: auto;
+  }
+
+  .left-header #title {
+    font-size: 3rem;
+  }
+}
+
+
+/* ===== Adjust form button layout so reset hugs the right edge ===== */
+#form_el > div {
+  display: flex;
+  justify-content: space-between; /* submit left, reset right */
+  align-items: center;
+  gap: 12px;
+}
+
+/* ensure submit stays left and reset right (no huge margin) */
+button[type="submit"] {
+  margin-right: 0;
+  align-self: flex-start;
+}
+
+button[type="reset"] {
+  align-self: flex-end;
+  background: linear-gradient(95deg, #736f6f, #000000);
+  padding: 10px 20px;
+  border-radius: 999px;
+}
+
+/* ===== Make the Result box larger and more visible ===== */
+#result1 {
+  width: 340px;                /* larger */
+  align-self: center;         /* center in right column */
+  padding: 18px 20px;
+  border-radius: 10px;
+  margin-top: 28px;
+  background: linear-gradient(100deg, #000000 55%, #736f6f);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* result inner text sizing */
+#result1 h3, #result1 h3 + div {
+  margin: 0 0 8px 0;
+}
+#result1 h3 { font-size: 1.05rem; }
+#result { font-size: 0.95rem; color: #9ca3af; }
+
+/* ===== Make the History box wider & taller, and the list more roomy ===== */
+#history {
+  width: 380px;               /* wider */
+  align-self: center;
+  padding: 18px 20px;
+  border-radius: 10px;
+  margin-top: 22px;
+  min-height: 140px;         /* more vertical room */
+  background: linear-gradient(100deg, #000000 55%, #736f6f);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* header: keep Clear All aligned right and compact */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.history-header h3 { margin: 0; font-size: 1.05rem; }
+#clear_history {
+  margin: 0;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+}
+
+/* History list improvements */
+#history_list {
+  max-height: 220px;
+  overflow-y: auto;
+  padding-top: 8px;
+  gap: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* each history item layout and delete button styling */
+#history_list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 6px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.14);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* nicer delete button */
+.delete_btn {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  margin-left: 12px;
+}
+
+/* Keep the icon / result boxes centered */
+#result1, #history {
+  display: block;
+}
+
+/* ===== Slightly reduce tallness of right column so layout looks tighter ===== */
+#form_sec {
+  min-height: 720px;   /* reduced from 850 */
+  padding: 28px 32px;  /* pull content in a little */
+}
+
+/* make sure textarea height and spacing fit the new sizes */
+#text_box { height: 170px; }
+
+/* small responsive tweak for medium screens */
+@media (max-width: 1000px) {
+  #result1, #history {
+    width: 95%;
+    align-self: center;
+  }
+
+  #history_list { max-height: 180px; }
+}
+
+/* Fix analyse/reset row to extend full width */
+#form_el > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Reset button aligned perfectly right */
+button[type="reset"] {
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+/* Full-width Result box still centered */
+#result1 {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Full-width History box */
+#history {
+  width: 100%;
+  align-self: stretch;
+  padding: 18px 22px;
+  border-radius: 12px;
+  margin-top: 22px;
+  background: linear-gradient(100deg, #000000 55%, #736f6f);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* Reduce right panel height so footer is visible */
+#form_sec {
+  min-height: 600px;
+  margin-bottom: 40px;
+}
+
+
+/* ------------------ Layout tweaks & footer visibility ------------------ */
+/* slightly reduce the main vertical footprint so footer is visible */
+#main {
+  min-height: calc(100vh - 220px); /* leaves room for header + footer */
+  padding-left: 140px;             /* keep layout shifted to the right */
+  gap: 60px;
+}
+
+/* reduce right column height so footer doesn't hide */
+#form_sec {
+  min-height: 560px;   /* tightened up */
+  padding: 28px 32px;
+  margin-bottom: 24px; /* give footer room */
+}
+
+/* ensure the body provides a small safe gap below content */
+body {
+  padding-bottom: 18px;
+}
+
+/* move footer slightly upward and center */
+footer {
+  margin-top: 18px;
+  padding: 12px 0;
+  position: relative;
+  z-index: 10;
+}
+
+/* ------------------ Glassmorphism: Result & History ------------------ */
+:root {
+  --glass-bg: rgba(255,255,255,0.03);
+  --glass-gradient: linear-gradient(110deg, rgba(255,255,255,0.02) 0%, rgba(115,111,111,0.07) 100%);
+  --glass-border: rgba(255,255,255,0.04);
+}
+
+/* shared glass card utilities */
+.glass-card {
+  background: var(--glass-gradient);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow:
+    0 6px 30px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.02);
+  backdrop-filter: blur(6px) saturate(1.05);
+  -webkit-backdrop-filter: blur(6px) saturate(1.05);
+  color: #e9eef4;
+}
+
+/* Result card */
+#result1 {
+  width: 100%;
+  max-width: 100%;
+  align-self: stretch;
+  margin-top: 28px;
+  min-height: 64px;
+}
+#result1 > div, #result1 > h3 {
+  margin: 0;
+}
+#result1 h3 { font-weight: 700; color: #ffffff; margin-bottom: 8px; }
+#result { color: #cbd5df; font-size: 0.95rem; }
+
+/* apply glass style to the containers */
+#result1, #history { 
+  /* add the utility class rules inline here for copy-paste simplicity */
+  background: var(--glass-gradient);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  backdrop-filter: blur(6px) saturate(1.05);
+  -webkit-backdrop-filter: blur(6px) saturate(1.05);
+}
+
+/* history specifics */
+#history {
+  width: 100%;
+  align-self: stretch;
+  min-height: 120px;
+  margin-top: 20px;
+}
+
+/* History list area */
+#history_list {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* each history item becomes a subtle pill */
+#history_list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: linear-gradient(100deg, rgba(255,255,255,0.01), rgba(0,0,0,0.12));
+  border: 1px solid rgba(255,255,255,0.02);
+  color: #e6eef4;
+}
+
+/* delete button - small neon icon-like pill */
+.delete_btn {
+  background: linear-gradient(90deg, #ff6b6b, #ef4444);
+  color: white;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.78rem;
+  box-shadow: 0 6px 20px rgba(239,68,68,0.14), 0 0 8px rgba(239,68,68,0.06) inset;
+  cursor: pointer;
+}
+
+/* ------------------ Neon pill buttons ------------------ */
+/* base pill */
+.pill {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: none;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.18s ease;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Analyse - cool bluish neon */
+button[type="button"].pill,
+button[type="button"],
+button[type="reset"].pill,
+button[type="reset"]  {
+  background: linear-gradient(180deg, rgba(56,189,248,0.18), rgba(0,0,0,0.1));
+  color: #f8feff;
+  box-shadow: 0 8px 30px rgba(56,189,248,0.06), 0 0 18px rgba(56,189,248,0.06) inset;
+}
+
+/* Reset - muted gray neon */
+/* button[type="reset"].pill,
+button[type="reset"] { */
+  /* background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.12)); */
+  /* color: #fff; */
+  /* box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 14px rgba(255,255,255,0.03) inset; */
+/* } */
+
+/* Clear All button style (small) */
+#clear_history {
+  background: linear-gradient(180deg, #ffffff, #dcdcdc);
+  color: #111;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* pill hover glow */
+.pill:hover, #clear_history:hover, .delete_btn:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45), 0 0 30px rgba(56,189,248,0.06);
+}
+
+/* Apply pill class automatically to existing buttons for safety */
+button[type="button"], button[type="reset"], #clear_history {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  /* keep pill geometry */
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+/* specific spacing: left submit and right reset are already split by flex row */
+#form_el > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* make buttons visually pill-like within the layout */
+button[type="button"] { width: auto; }
+button[type="reset"]  { width: auto; }
+
+/* ------------------ Small visual polish ------------------ */
+/* result title and small subtitle */
+#result1 h3 { color: #ffffff; font-size: 1.02rem; margin-bottom: 6px; }
+#result { color: #c6d2db; }
+
+/* history header alignment */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ------------------ Responsive redesign ------------------ */
+@media (max-width: 1000px) {
+  /* stack columns and center them */
+  #main {
+    flex-direction: column;
+    padding-left: 28px;
+    padding-right: 28px;
+    gap: 28px;
+    min-height: auto;
+  }
+  #left_col, #form_sec {
+    width: 100%;
+    max-width: 980px;
+    min-height: auto;
+  }
+
+  /* title smaller */
+  .left-header #title {
+    font-size: 2.6rem;
+  }
+
+  /* buttons take full width in mobile mode */
+  #form_el > div {
+    flex-direction: column;
+    gap: 12px;
+  }
+  button[type="submit"], button[type="reset"] {
+    width: 100%;
+    text-align: center;
+    padding: 12px 16px;
+    border-radius: 12px;
+  }
+
+  /* Result and History span full width */
+  #result1, #history, #history_list {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #history_list { max-height: 160px; }
+}
+
+@media (max-width: 600px) {
+  /* even smaller typography */
+  .left-header #title { font-size: 1.9rem; }
+  #cont h2 { font-size: 1.25rem; }
+  #cont p { font-size: 0.95rem; }
+
+  /* reduce main gaps */
+  #main { gap: 18px; padding-left: 18px; padding-right: 18px; }
+}
+
+.left-header {
+  /* nudge the whole header block upward */
+  transform: translateY(-25px);
+  position: relative;
+  z-index: 5;
+}
+
+/* push the description card down a bit */
+#cont {
+  margin-top: 36px; /* increases the space between title and description */
+  position: relative;
+  z-index: 1;
+}
+
+/* keep overlap clean on small screens */
+@media (max-width: 1000px) {
+  .left-header { transform: translateY(-20px); }
+  #cont { margin-top: 20px; }
+}

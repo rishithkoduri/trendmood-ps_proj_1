@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analyser</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="icon_tab.jpg" type="images\jpg">
+</head>
+<body>
+    <div id="intro_overlay">
+        <h1 class="flicker-text">TrendMood AI</h1>
+    </div>
+    <div id="main" class="fade-in">
+        <div id="left_col">
+            <header class="left-header">
+            <h1 id="title">TrendMood</h1>
+            <p>ML Model to analyse text sentiment</p>
+            </header>
+            <div id="cont">
+            <h2 style="text-align: center;">Description</h2>
+            <p style="text-align: center;">Your text will be classified into positive, negative, or neutral segments.</p>
+            </div>
+        </div>
+
+        <div id="form_sec">
+            <form id="form_el">
+            <input type="text" placeholder="Your name" id="name" required>
+            <br>
+            <div class="input-wrapper">
+                <textarea name="text_box" id="text_box" placeholder="Please enter any text" cols="50" rows="8" required></textarea>
+                <button type="button" id="mic_btn" title="Click to speak">
+                    <img src="clean_minimal_neon_mic.svg" alt="mic" style="width:24px; height:24px;">
+                </button>
+
+            </div>
+            <br>
+            <div>
+            <button type="button" id="analyze_btn" class="pill">Analyse</button>
+            <button type="reset" class="pill">Reset</button>
+            </div>
+            </form>
+            <br><br>
+            <div id="result1">
+                <div><h3>Result</h3></div>
+                <div id="result">No Result yet</div>
+            </div>
+            <div id="history"> 
+                <div class="history-header fade-in">
+                    <h3>History</h3>
+                    <button id="clear_history">Clear All</button>
+                </div>
+                    <ul id="history_list"></ul>
+                <p id="empty_msg">No History yet</p>
+            </div>
+        </div>
+    </div>
+    <footer class="fade-in">
+        <div id="bottom">
+            <p>&copy; NGIT - CSM_A_2024-28;</p>
+        </div>
+    </footer>
+    <script src="app.js" type="module"></script>
+</body>
+</html>
